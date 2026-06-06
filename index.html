@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BH STORE | Vente · Accessoires — Ajim Djerba</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<nav id="mainNav">
+  <div class="nav-top">
+    <a class="logo-w" href="#" onclick="closeProductPage()">
+      <img src="YASSERLOGO.png" alt="BH STORE" style="height:48px;width:48px;border-radius:50%;object-fit:cover;">
+      <div>
+        <div class="logo-txt">BH <span>STORE</span></div>
+        <span class="logo-tagline">Vente · Accessoires</span>
+        <span class="logo-byhyasser">by BH YASSER</span>
+      </div>
+    </a>
+
+    
+    <div class="nav-search">
+      <div class="sbox">
+        <input type="text" placeholder="Rechercher un produit, une marque..." id="si" autocomplete="off"/>
+        <button onclick="doSearch()" aria-label="Rechercher">⌕</button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
+    
+    <div class="nav-r">
+      
+      <button class="search-mobile-btn" id="mobileSearchBtn" onclick="toggleMobileSearch()" aria-label="Rechercher">⌕</button>
+      
+      <a href="#" class="nav-login" id="navLoginBtn" onclick="openAuth('login');return false;">
+        <span class="nav-login-ico">👤</span>
+        Connexion
+      </a>
+      
+      <div class="nav-user-pill" id="navUserPill" onclick="this.classList.toggle('open')" onblur="this.classList.remove('open')" tabindex="0">
+        <div class="nav-avatar" id="navAvatar"></div>
+        <span class="nav-user-name" id="navUserName"></span>
+        <div class="user-dropdown">
+          <a onclick="openAuth('profile')">👤 Mon compte</a>
+          <hr/>
+          <a onclick="doLogout()">🚪 Déconnexion</a>
+        </div>
+      </div>
+      
+      <button class="cart-btn" onclick="openCart()" aria-label="Mon panier">
+        🛒<span class="cbadge" id="cb">0</span>
+      </button>
+      
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="nav-bottom">
+    <ul class="nav-links">
+      <li class="nav-all-btn" onclick="filt('all',this)"><a href="#prods"><span style="margin-right:.45rem;font-size:.85rem;">☰</span> TOUS NOS PRODUITS</a></li>
+      <li class="nav-has-drop">
+        <a href="#prods"  onclick="filt('phones',this)">Smartphones <span class="nav-chevron">▾</span></a>
+        <ul class="nav-drop">
+          <li><a onclick="filt('iphone',this)" href="#prods">iPhone</a></li>
+          <li><a onclick="filt('samsung',this)" href="#prods">Samsung</a></li>
+          <li><a onclick="filt('xiaomi',this)" href="#prods">Xiaomi</a></li>
+          <li><a onclick="filt('mochmawjoud',this)" href="#prods">Autres marques</a></li>
+        </ul>
+      </li>
+      <li class="nav-has-drop">
+        <a href="#prods"  onclick="filt('acc',this)">Accessoires <span class="nav-chevron">▾</span></a>
+        <ul class="nav-drop">
+          <li><a onclick="filt('protection',this)" href="#prods">Coques &amp; protections</a></li>
+          <li><a onclick="filt('chargeur',this)"  href="#prods">Chargeurs</a></li>
+          <li><a onclick="filt('audio',this)" href="#prods">Audio</a></li>
+          <li><a onclick="filt('cables',this)" href="#prods">Câbles</a></li>
+        </ul>
+      </li>
+      <li><a href="#contact" onclick="closeProductPage()">Contact</a></li>
+      <li><a href="#" onclick="closeProductPage()">Promotions</a></li>
+      <li><a href="#" onclick="closeProductPage()">Nouveautés</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="nav-info">
+    <div class="is-item">
+      <span class="is-icon">📍</span>
+      <span><strong>Ajim Djerba</strong></span>
+    </div>
+    <div class="is-sep"></div>
+    <div class="is-item">
+      <span class="is-icon">🕐</span>
+      <span>Ouvert <strong>8:00AM — 12:00AM</strong> · 7j/7</span>
+    </div>
+    <div class="is-sep"></div>
+    <div class="is-item">
+      <span class="is-icon">📘</span>
+      <span><a class="is-link" href="#">BH STORE Ajim</a> sur Facebook</span>
+    </div>
+  </div>
+</nav>
+
+
+<div class="mobile-search-panel" id="mobileSearchPanel">
+  <div class="mobile-search-inner">
+    <input type="text" id="siMobile" placeholder="Rechercher un produit..." autocomplete="off" inputmode="search"/>
+    <button onclick="doMobileSearch()">⌕</button>
+    <div class="mobile-search-results" id="mobileSearchResults"></div>
+  </div>
+</div>
+
+
+
+
+<div class="hero-new" style="position:relative;overflow:hidden;margin-top:var(--nav-total);border-bottom:1px solid rgba(255,255,255,.06);background:#06080f;padding:1.8rem 0 1.8rem;">
+
+  
+  <div style="position:absolute;top:-80px;left:30%;width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(26,86,255,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;right:10%;width:400px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(77,121,255,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+  
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,86,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(26,86,255,.05) 1px,transparent 1px);background-size:40px 40px;"></div>
+
+  <div style="max-width:1300px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:55% 45%;align-items:center;gap:2rem;">
+
+    
+    <div style="position:relative;z-index:2;">
+      <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:1.2rem;opacity:0;animation:hFadeUp .5s ease .1s forwards;">
+        <div style="width:24px;height:2px;background:#1a56ff;border-radius:1px;flex-shrink:0"></div>
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#1a56ff;">VOTRE EXPERT MOBILE À DJERBA</span>
+      </div>
+      <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,6vw,6.5rem);line-height:.88;letter-spacing:1px;color:#fff;margin:0 0 1.2rem;opacity:0;animation:hFadeUp .65s ease .2s forwards;">
+        LES MEILLEURS<br/>
+        <span style="color:#1a56ff;">SMARTPHONES</span><br/>
+        SONT ICI.
+      </h1>
+      <p style="font-size:.9rem;color:rgba(255,255,255,0.6);font-weight:400;line-height:1.8;max-width:400px;margin-bottom:1.8rem;opacity:0;animation:hFadeUp .65s ease .4s forwards;">
+        iPhone, Samsung, Xiaomi &amp; plus — disponibles à Ajim Djerba.
+      </p>
+      <div style="display:flex;gap:.65rem;flex-wrap:wrap;opacity:0;animation:hFadeUp .65s ease .5s forwards;">
+        <div style="display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:rgba(26,86,255,0.15);border:1px solid rgba(26,86,255,0.4);border-radius:50px;backdrop-filter:blur(8px);">
+          <span style="width:7px;height:7px;border-radius:50%;background:#4d79ff;box-shadow:0 0 8px #4d79ff;flex-shrink:0;"></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a0b4ff;">Rapide</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:50px;backdrop-filter:blur(8px);">
+          <span style="width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(255,255,255,0.5);flex-shrink:0;"></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);">Fiable</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:rgba(26,86,255,0.1);border:1px solid rgba(77,121,255,0.35);border-radius:50px;backdrop-filter:blur(8px);">
+          <span style="width:7px;height:7px;border-radius:50%;background:#6c8fff;box-shadow:0 0 8px #6c8fff;flex-shrink:0;"></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8ca8ff;">Pro</span>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:2rem;margin-top:2rem;opacity:0;animation:hFadeUp .65s ease .6s forwards;">
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;line-height:1;" id="heroCount">0<span style="color:#4d79ff;font-size:1.1rem;">+</span></div>
+          <div style="font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Clients satisfaits</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;"></div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;line-height:1;">1<span style="color:#4d79ff;font-size:1.1rem;">h</span></div>
+          <div style="font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Livraisons / jour</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;"></div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;line-height:1;">6<span style="color:#4d79ff;font-size:1.1rem;">M</span></div>
+          <div style="font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Garantie offerte</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;"></div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;line-height:1;">7<span style="color:#4d79ff;font-size:1.1rem;">j</span></div>
+          <div style="font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Ouvert / 7</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:8px;margin-top:1.5rem;opacity:0;animation:hFadeUp .65s ease .7s forwards;">
+        <div style="width:20px;height:6px;border-radius:3px;background:#1a56ff;"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>
+      </div>
+    </div>
+
+    
+    <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;height:100%;opacity:0;animation:hFadeIn .8s ease .3s forwards;">
+
+      
+      <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:220px;height:60px;border-radius:50%;background:rgba(26,86,255,0.25);filter:blur(28px);"></div>
+
+      
+      <div style="position:relative;width:180px;flex-shrink:0;">
+        
+        <div style="width:180px;height:270px;background:linear-gradient(160deg,#1a1f35 0%,#0d1020 100%);border-radius:28px;border:2px solid rgba(77,121,255,0.3);box-shadow:0 30px 80px rgba(26,86,255,0.25),0 0 0 1px rgba(255,255,255,0.05),inset 0 1px 0 rgba(255,255,255,0.08);position:relative;overflow:hidden;">
+          
+          <div style="position:absolute;top:14px;left:10px;right:10px;bottom:14px;background:linear-gradient(135deg,#0a1428 0%,#0d1a3a 50%,#060c1a 100%);border-radius:20px;overflow:hidden;">
+            
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,86,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(26,86,255,.08) 1px,transparent 1px);background-size:18px 18px;"></div>
+            
+            <div style="position:absolute;top:28px;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 18px;">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,86,255,0.6);display:flex;align-items:center;justify-content:center;font-size:16px;">📱</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,86,255,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;">🔋</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(77,121,255,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;">🎧</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,86,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;">🔧</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(77,121,255,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;">📦</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,86,255,0.5);display:flex;align-items:center;justify-content:center;font-size:16px;">⭐</div>
+            </div>
+            
+            <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,rgba(26,86,255,0.2),transparent);"></div>
+            
+            <div style="position:absolute;bottom:20px;left:0;right:0;text-align:center;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#1a56ff;letter-spacing:3px;">BH STORE</div>
+              <div style="font-size:.5rem;color:rgba(108,143,255,0.6);letter-spacing:2px;text-transform:uppercase;">Ajim Djerba</div>
+            </div>
+          </div>
+          
+          <div style="position:absolute;top:7px;left:50%;transform:translateX(-50%);width:50px;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;"></div>
+          
+          <div style="position:absolute;top:80px;right:-3px;width:3px;height:30px;background:rgba(77,121,255,0.4);border-radius:2px;"></div>
+          
+          <div style="position:absolute;top:70px;left:-3px;width:3px;height:20px;background:rgba(77,121,255,0.3);border-radius:2px;"></div>
+          <div style="position:absolute;top:98px;left:-3px;width:3px;height:20px;background:rgba(77,121,255,0.3);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      
+      <div style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:.45rem 1rem;display:flex;align-items:center;gap:.5rem;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.3);">
+        <div style="width:16px;height:16px;border-radius:50%;background:#2ecc71;display:flex;align-items:center;justify-content:center;font-size:9px;">✓</div>
+        <span style="font-size:.72rem;font-weight:600;color:#fff;">Garantie Officielle</span>
+      </div>
+
+      
+      <div style="position:absolute;right:-30px;top:15%;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:.45rem 1rem;display:flex;align-items:center;gap:.5rem;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.3);">
+        <div style="width:8px;height:8px;border-radius:50%;background:#f39c12;"></div>
+        <span style="font-size:.72rem;font-weight:600;color:#fff;">Livraison 48h</span>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="mq"><div class="mq-inner" id="mqi"></div></div>
+
+
+
+
+<div class="wrap pt0" id="prods">
+  <div class="sec-row">
+    <div>
+      <div class="eyebrow">Notre catalogue</div>
+      <div class="stitle" style="margin-bottom:0">PRODUITS <span class="dim">DISPONIBLES</span></div>
+    </div>
+  </div>
+  <div class="ftabs">
+    <button class="ftab active" onclick="filt('all',this)">Tout</button>
+    <button class="ftab" onclick="filt('phones',this)">Smartphones</button>
+    <button class="ftab" onclick="filt('acc',this)">Accessoires</button>
+    <button class="ftab" onclick="filt('audio',this)">Audio</button>
+    <button class="ftab" onclick="filt('parts',this)">Pièces</button>
+  </div>
+  <div class="pgrid" id="pg"></div>
+</div>
+
+
+
+
+<footer id="footer" data-contact-anchor><a id="contact" style="display:block;position:absolute;top:-120px;pointer-events:none"></a>
+  <div class="footer-wave"></div>
+
+  <div class="ftop">
+    
+    <div>
+      <a class="logo-w" href="#" onclick="closeProductPage()">
+        <img src="YASSERLOGO.png" alt="BH STORE" style="height:48px;width:48px;border-radius:50%;object-fit:cover;">
+        <div>
+          <div class="logo-txt" style="color:#fff">BH <span>STORE</span></div>
+          <span class="logo-tagline" style="color:rgba(255,255,255,.35)">Vente · Accessoires · Livraison</span>
+        </div>
+      </a>
+      <p class="fdesc">Votre expert mobile à Ajim Djerba. Vente de smartphones et accessoires. Rapide, fiable, professionnel.</p>
+      
+    </div>
+
+    
+    <div class="fcol"><h5>Navigation</h5><ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#svcs">Services</a></li>
+      <li><a href="#prods">Produits</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></div>
+
+    
+    <div class="fcol"><h5>Services</h5><ul>
+      
+      <li><a href="#">Remplacement batterie</a></li>
+      <li><a href="#">Déblocage</a></li>
+      <li><a href="#">Diagnostic gratuit</a></li>
+    </ul></div>
+
+    
+    <div class="fcol"><h5>Infos</h5><ul>
+      <li><a href="https://www.google.com/maps/place/Ajim/" target="_blank" rel="noopener noreferrer" class="finfo-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;color:#e74c8b"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Ajim Djerba</a></li>
+      <li><a class="finfo-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;color:rgba(255,255,255,.45)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 8:00AM — 12:00AM · 7j/7</a></li>
+      <li><a href="https://www.facebook.com/yasser.benhariz.5?locale=fr_FR" target="_blank" class="finfo-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#1877F2" style="margin-right:6px;vertical-align:middle"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Yasser Ben Hariz</a></li>
+      <li><a href="https://www.instagram.com/bhz_yasser" target="_blank" class="finfo-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" style="margin-right:6px;vertical-align:middle"><defs><linearGradient id="ig-grad" x1="30%" y1="100%" x2="90%" y2="0%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></linearGradient></defs><path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> bhz_yasser</a></li>
+      <li><a href="mailto:benharizyasser@gmail.com" class="finfo-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" style="margin-right:6px;vertical-align:middle"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg> benharizyasser@gmail.com</a></li>
+      <li><a href="tel:+21650303332" class="finfo-link"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;color:#e74c8b"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l1.06-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +216 50 303 332</a></li>
+    </ul></div>
+  </div>
+
+  <div class="fbot">
+    <div class="fbot-badge">
+      <div class="fbot-dot"></div>
+      <span>© 2025 BH STORE Ajim — Tous droits réservés</span>
+    </div>
+    <span>Djerba, Tunisie 🇹🇳</span>
+  </div>
+</footer>
+
+
+<div class="auth-page" id="pageLogin">
+  
+  <a class="auth-back" onclick="closeAuthAndRestore()">
+    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+    Fermer
+  </a>
+
+  
+  <div class="auth-left">
+    
+    <div class="auth-logo-wrap">
+      <img class="auth-logo-img" src="YASSERLOGO.png" alt="BH STORE Logo" style="height:64px;width:64px;border-radius:50%;object-fit:cover;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(26,86,255,0.7));">
+      <div>
+        <span class="auth-logo-txt">BH <span>STORE</span></span>
+        <span class="auth-logo-sub">by BH YASSER</span>
+      </div>
+    </div>
+
+    
+    <div class="auth-avatar">👤</div>
+
+    <div class="auth-form-title">Connexion</div>
+    <p class="auth-subtitle">Pas encore de compte ? <a onclick="openAuth('register')">Créer votre compte</a></p>
+
+    <div class="auth-err" id="loginErr"></div>
+
+    
+    <div class="auth-field-group">
+      <label>Email</label>
+      <div class="auth-field-inner">
+        <span class="afield-icon">✉</span>
+        <input class="auth-input" id="loginEmail" type="email" placeholder="votre@email.com" autocomplete="email"/>
+      </div>
+    </div>
+
+    
+    <div class="auth-field-group">
+      <label>Mot de passe</label>
+      <div class="auth-field-inner">
+        <span class="afield-icon">🔒</span>
+        <input class="auth-input" id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password"
+          onkeydown="if(event.key==='Enter')doLogin()"/>
+      </div>
+    </div>
+
+    <a href="#" class="auth-forgot">Mot de passe oublié ?</a>
+
+    <button class="auth-submit" onclick="doLogin()">
+      Se connecter
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </button>
+
+    <div class="auth-divider"><span>Espace client</span></div>
+
+    <div class="auth-dots">
+      <span class="active"></span><span></span><span></span>
+    </div>
+  </div>
+
+  
+  <div class="auth-right">
+    <div class="auth-orb auth-orb-1"></div>
+    <div class="auth-orb auth-orb-2"></div>
+    <div class="auth-hero">
+      <div class="auth-hero-tag"><span class="auth-hero-tag-dot"></span> Ajim · Djerba</div>
+      <h1 class="auth-hero-title">Bienvenue<br><span class="accent">chez nous.</span></h1>
+      <p class="auth-hero-desc">Vente et accessoires téléphoniques.<br>Connectez-vous à votre espace personnel.</p>
+      <div class="auth-hero-badges">
+        <span class="auth-hero-badge">📱 Smartphones</span>
+        <span class="auth-hero-badge">🛒 Vente</span>
+        <span class="auth-hero-badge">🔧 Accessoires</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="auth-page" id="pageRegister">
+  <a class="auth-back" onclick="closeAuthAndRestore()">
+    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+    Fermer
+  </a>
+
+  
+  <div class="auth-left">
+    <div class="auth-logo-wrap">
+      <img class="auth-logo-img" src="YASSERLOGO.png" alt="BH STORE Logo" style="height:64px;width:64px;border-radius:50%;object-fit:cover;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(26,86,255,0.7));">
+      <div>
+        <span class="auth-logo-txt">BH <span>STORE</span></span>
+        <span class="auth-logo-sub">by BH YASSER</span>
+      </div>
+    </div>
+
+    <div class="auth-avatar">✨</div>
+    <div class="auth-form-title">Créer un compte</div>
+    <p class="auth-subtitle">Déjà inscrit ? <a onclick="openAuth('login')">Se connecter</a></p>
+
+    <div class="auth-err" id="regErr"></div>
+    <div class="auth-ok" id="regOk"></div>
+
+    <div class="auth-field-group">
+      <label>Prénom &amp; Nom</label>
+      <div class="auth-field-inner">
+        <span class="afield-icon">👤</span>
+        <input class="auth-input" id="regName" type="text" placeholder="Ex : Ahmed Ben Ali" autocomplete="name"/>
+      </div>
+    </div>
+    <div class="auth-field-group">
+      <label>Email</label>
+      <div class="auth-field-inner">
+        <span class="afield-icon">✉</span>
+        <input class="auth-input" id="regEmail" type="email" placeholder="votre@email.com" autocomplete="email"/>
+      </div>
+    </div>
+    <div class="auth-field-group">
+      <label>Mot de passe</label>
+      <div class="auth-field-inner">
+        <span class="afield-icon">🔒</span>
+        <input class="auth-input" id="regPass" type="password" placeholder="Min 6 caractères" autocomplete="new-password"
+          onkeydown="if(event.key==='Enter')doRegister()"/>
+      </div>
+    </div>
+
+    <button class="auth-submit" onclick="doRegister()">
+      Créer mon compte
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </button>
+
+    <div class="auth-divider"><span>Espace client</span></div>
+    <div class="auth-dots">
+      <span></span><span class="active"></span><span></span>
+    </div>
+  </div>
+
+  
+  <div class="auth-right">
+    <div class="auth-orb auth-orb-1"></div>
+    <div class="auth-orb auth-orb-2"></div>
+    <div class="auth-hero">
+      <div class="auth-hero-tag"><span class="auth-hero-tag-dot"></span> Ajim · Djerba</div>
+      <h1 class="auth-hero-title">Rejoignez<br><span class="accent">notre famille.</span></h1>
+      <p class="auth-hero-desc">Créez votre compte et profitez de<br>tous nos services en ligne.</p>
+      <div class="auth-hero-badges">
+        <span class="auth-hero-badge">📱 Smartphones</span>
+        <span class="auth-hero-badge">🛒 Vente</span>
+        <span class="auth-hero-badge">🔧 Accessoires</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="auth-page" id="pageProfile">
+  <a class="auth-back" onclick="closeAuthAndRestore()">
+    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+    Fermer
+  </a>
+
+  
+  <div class="auth-left">
+    <div class="auth-logo-wrap">
+      <img class="auth-logo-img" src="YASSERLOGO.png" alt="BH STORE Logo" style="height:64px;width:64px;border-radius:50%;object-fit:cover;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(26,86,255,0.7));">
+      <div>
+        <span class="auth-logo-txt">BH <span>STORE</span></span>
+        <span class="auth-logo-sub">by BH YASSER</span>
+      </div>
+    </div>
+    <div class="auth-card">
+      <div class="profile-avatar-big" id="profileAvatar"></div>
+      <div class="profile-info">
+        <div class="profile-name" id="profileName"></div>
+        <div class="profile-email" id="profileEmail"></div>
+      </div>
+      <button class="auth-logout" onclick="doLogout()">🚪 Déconnexion</button>
+    </div>
+  </div>
+
+ 
+  <div class="auth-right">
+    <div class="auth-orb auth-orb-1"></div>
+    <div class="auth-orb auth-orb-2"></div>
+    <div class="auth-hero">
+      <div class="auth-hero-tag"><span class="auth-hero-tag-dot"></span> Mon espace</div>
+      <h1 class="auth-hero-title">Votre<br><span class="accent">espace perso.</span></h1>
+      <p class="auth-hero-desc">Gérez votre compte et suivez<br>vos commandes facilement.</p>
+      <div class="auth-hero-badges">
+        <span class="auth-hero-badge">🏠 Tableau de bord</span>
+        <span class="auth-hero-badge">📦 Commandes</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <h3>Panier</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="ctot-row"><span>Total</span><span id="cartTotal">0 DT</span></div>
+    <button class="cord" onclick="checkout()">Commander →</button>
+  </div>
+</div>
+<div class="toast" id="toast">✓ Ajouté</div>
+
+
+<div class="success-modal" id="successModal">
+  <div class="success-modal-content">
+    <div class="success-modal-icon">✓</div>
+    <div class="success-modal-title">Commande Confirmée!</div>
+    <div class="success-modal-message">
+      <p>Merci <span id="successUserName"></span>!</p>
+      <p>Votre commande a été enregistrée avec succès.</p>
+    </div>
+    <div class="success-modal-order">
+      <span>Numéro de commande:</span>
+      <strong id="successOrderId"></strong>
+    </div>
+    <button class="success-modal-button" onclick="closeSuccessModal()">Continuer les achats</button>
+  </div>
+</div>
+
+
+<div class="product-modal" id="productModal">
+  <div class="product-modal-content">
+    <button class="product-modal-close" onclick="closeProductModal()">✕</button>
+    <div class="product-modal-body">
+      <div class="product-modal-image">
+        <img id="productModalImg" src="" alt=""/>
+      </div>
+      <div class="product-modal-info">
+        <div class="product-modal-brand" id="productModalBrand"></div>
+        <div class="product-modal-name" id="productModalName"></div>
+        <div class="product-modal-specs" id="productModalSpecs"></div>
+        <div class="product-modal-price">
+          <span class="product-modal-price-main" id="productModalPrice"></span>
+          <span class="product-modal-price-old" id="productModalOldPrice"></span>
+        </div>
+        <button class="product-modal-add" onclick="addToCartFromModal()">🛒 Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="product-page" id="productPage">
+  <button class="product-page-close" onclick="closeProductPage()">✕</button>
+  
+  <div class="product-page-container">
+    <div class="product-page-images">
+      <img id="productPageImage" src="" alt="Product" class="product-page-image-main"/>
+    </div>
+    
+    
+    <div class="product-page-details">
+      <div class="product-page-header">
+        <h1 id="productPageName" class="product-page-title"></h1>
+        <div class="product-page-price-section">
+          <span class="product-page-price-main" id="productPagePrice"></span>
+          <span class="product-page-price-old" id="productPageOldPrice"></span>
+        </div>
+      </div>
+
+      
+      <div class="product-page-status">
+        <span class="status-badge status-instock">En Stock</span>
+      </div>
+
+      
+      <div class="product-page-reference">
+        Référence: <span id="productPageRef"></span>
+      </div>
+
+      
+      <div class="product-page-brand" id="productPageBrand"></div>
+
+      
+      <div class="product-page-description" id="productPageDescription"></div>
+
+      
+      <div class="product-page-specs-section">
+        <h3>Caractéristiques</h3>
+        <div class="product-page-specs" id="productPageSpecs"></div>
+      </div>
+
+      
+      <div class="product-page-actions">
+        <div class="quantity-selector">
+          <button class="qty-btn" onclick="decQty()">−</button>
+          <input type="number" id="productQty" value="1" min="1" readonly>
+          <button class="qty-btn" onclick="incQty()">+</button>
+        </div>
+        <button class="product-page-add-btn" onclick="addToCartFromPage()">🛒 Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="edit.js"></script>
+</body>
+</html>
