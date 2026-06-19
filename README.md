@@ -3,54 +3,54 @@
 
 ## 📌 Description
 
-BH STORE est une plateforme E-Commerce moderne développée pour la vente de smartphones, accessoires et pièces de rechange.
+BH STORE is a modern E-Commerce platform developed for the sale of smartphones, accessories, and spare parts.
 
-Le site permet aux utilisateurs de parcourir les produits disponibles, rechercher rapidement un article, ajouter des produits au panier, créer un compte et passer des commandes en ligne.
+The website allows users to browse available products, quickly search for items, add products to their shopping cart, create an account, and place orders online.
 
-Le projet a été développé dans le cadre d'un apprentissage du développement Web Full Stack en utilisant PHP, MySQL, HTML, CSS et JavaScript.
+This project was developed as part of a Full Stack Web Development learning experience using PHP, MySQL, HTML, CSS, and JavaScript.
 
 ---
 
-## ✨ Fonctionnalités Principales
+## ✨ Main Features
 
-### 👤 Gestion des Utilisateurs
-- Inscription des nouveaux utilisateurs
-- Connexion sécurisée
-- Déconnexion
-- Gestion de session utilisateur
+### 👤 User Management
+- New user registration
+- Secure login
+- Logout functionality
+- User session management
 
-### 📱 Catalogue Produits
+### 📱 Product Catalog
 - Smartphones
-- Accessoires
-- Pièces de rechange
+- Accessories
+- Spare parts
 
-### 🔍 Recherche Intelligente
-- Recherche dynamique des produits
-- Affichage rapide des résultats
+### 🔍 Smart Search
+- Dynamic product search
+- Fast display of search results
 
-### 🛍️ Panier d'Achat
-- Ajout de produits
-- Modification des quantités
-- Calcul automatique du total
+### 🛍️ Shopping Cart
+- Add products to cart
+- Modify product quantities
+- Automatic total calculation
 
-### 📦 Gestion des Commandes
-- Validation des commandes
-- Enregistrement dans la base de données
-- Historique des commandes
+### 📦 Order Management
+- Order validation
+- Order storage in the database
+- Order history management
 
 ### ⚙️ Administration
-- Tableau de bord administrateur
-- Gestion des produits
-- Suivi des commandes
+- Administrator dashboard
+- Product management
+- Order tracking and management
 
 ### 📱 Responsive Design
-- Compatible PC
-- Compatible Tablette
-- Compatible Mobile
+- Desktop compatible
+- Tablet compatible
+- Mobile compatible
 
 ---
 
-## 🛠️ Technologies Utilisées
+## 🛠️ Technologies Used
 
 ### Front-End
 - HTML5
@@ -60,15 +60,15 @@ Le projet a été développé dans le cadre d'un apprentissage du développement
 ### Back-End
 - PHP
 
-### Base de Données
+### Database
 - MySQL
 
 ---
 
-## 🗄️ Structure de la Base de Données
+## 🗄️ Database Structure
 
 ### users
-Gestion des comptes utilisateurs :
+User account management:
 
 - id
 - name
@@ -78,7 +78,7 @@ Gestion des comptes utilisateurs :
 - updated_at
 
 ### products
-Stockage des produits :
+Product storage:
 
 - id
 - name
@@ -90,7 +90,7 @@ Stockage des produits :
 - image
 
 ### commandes
-Gestion des commandes :
+Order management:
 
 - id
 - user_id
@@ -101,9 +101,9 @@ Gestion des commandes :
 
 ---
 
-## 📂 Structure du Projet
+## 📂 Project Structure
 
-```
+```text
 BHSTORE/
 │
 ├── index.html
@@ -122,38 +122,38 @@ BHSTORE/
 │
 ├── DATABASE.sql
 │
-└── Images Produits
+└── Product Images
 ```
 
 ---
 
 ## 🚀 Installation
 
-### 1. Cloner le projet
+### 1. Clone the Project
 
 ```bash
-git clone https://github.com/VOTRE-USERNAME/BHSTORE.git
+git clone https://github.com/YOUR-USERNAME/BHSTORE.git
 ```
 
-### 2. Importer la base de données
+### 2. Import the Database
 
-Importer le fichier :
+Import the following file:
 
 ```sql
 DATABASE.sql
 ```
 
-dans phpMyAdmin.
+into phpMyAdmin.
 
-### 3. Configurer la connexion MySQL
+### 3. Configure the MySQL Connection
 
-Modifier :
+Edit:
 
 ```php
 config.php
 ```
 
-avec vos informations :
+with your database information:
 
 ```php
 $host = "localhost";
@@ -162,15 +162,15 @@ $password = "";
 $database = "bh_store";
 ```
 
-### 4. Lancer le projet
+### 4. Run the Project
 
-Placer le dossier dans :
+Place the project folder inside:
 
 ```text
 xampp/htdocs/
 ```
 
-Puis ouvrir :
+Then open:
 
 ```text
 http://localhost/BHSTORE
@@ -178,31 +178,31 @@ http://localhost/BHSTORE
 
 ---
 
-## 🎯 Objectifs du Projet
+## 🎯 Project Objectives
 
-- Mettre en pratique le développement Web Full Stack.
-- Comprendre l'intégration Front-End / Back-End.
-- Utiliser PHP et MySQL dans une application réelle.
-- Développer une plateforme E-Commerce fonctionnelle.
-
----
-
-## 📍 Localisation
-
-BH STORE – Ajim, Djerba, Tunisie
+- Apply Full Stack Web Development concepts in practice.
+- Understand Front-End and Back-End integration.
+- Use PHP and MySQL in a real-world application.
+- Develop a functional E-Commerce platform.
 
 ---
 
-## 👨‍💻 Auteur
+## 📍 Location
+
+BH STORE – Ajim, Djerba, Tunisia
+
+---
+
+## 👨‍💻 Author
 
 **BH YASSER**
 
-Étudiant en Informatique – Génie Logiciel
+Computer Science Student – Software Engineering
 
-Projet E-Commerce développé dans le cadre de l'apprentissage du développement Web.
+E-Commerce project developed as part of a Web Development learning experience.
 
 ---
 
-## 📄 Licence
+## 📄 License
 
-Projet académique et éducatif.
+Educational and academic project.
